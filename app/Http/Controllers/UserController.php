@@ -153,8 +153,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        if (File::exists($user->logo)) {
+            unlink($user->logo);
+        }
+        $user->delete();
+        return redirect()->back()->with('deleted','user deleted');
     }
 }
