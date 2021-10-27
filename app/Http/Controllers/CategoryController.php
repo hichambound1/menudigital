@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -41,7 +42,7 @@ class CategoryController extends Controller
             'name_en' => 'required|max:255',
             'name_fr' => 'required|max:255',
             'name_ar' => 'required|max:255',
-            'photo'   => 'required|max:255',
+            'photo'   => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         if($request->hasFile('photo')){
             $number = mt_rand(1, 999999);
@@ -80,7 +81,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('dashboard.categories.edit',['category'=>$category]);
     }
 
     /**
@@ -92,7 +93,33 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $this->validate($request,[
+            'name_en' => 'required|max:255',
+            'name_fr' => 'required|max:255',
+            'name_ar' => 'required|max:255',
+            'photo'   => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        if($request->hasFile('photo')){
+            $number = mt_rand(1, 999999);
+            $image = $request->file('photo');
+            $destinationPath = 'category_photo';
+            $image->move($destinationPath, $number . $image->getClientOriginalName());
+            $photo =$destinationPath . "/" . $number . $image->getClientOriginalName();
+            if (File::exists($category->photo)) {
+                unlink($category->photo);
+            }
+        }
+        $category->update([
+            'name_en'=>$request->name_en,
+            'name_fr'=>$request->name_fr,
+            'name_ar'=>$request->name_ar,
+
+        ]);
+        if($request->hasFile('photo')){
+            $category->photo=$photo;
+            $category->save();
+        }
+        return redirect()->route('category.index')->with('updated','category updated seccessfully');
     }
 
     /**

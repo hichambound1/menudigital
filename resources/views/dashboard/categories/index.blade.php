@@ -66,7 +66,7 @@
                             <td class="d-flex">
 
 
-
+                                <a href="{{route('category.edit',$item->id)}}" class="btn btn-warning p-2 text-white " > <i class="ti-pencil"></i></a>
                                 <form action="{{ route('category.destroy', [$item->id?? '']) }}" method="post">
                                     @method('DELETE')
                                     @csrf
