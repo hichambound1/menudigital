@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+
+        $categories= Category::all();
+        return view('dashboard.categories.index',['categories'=>$categories]);
     }
 
     /**
@@ -24,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.categories.add');
     }
 
     /**
@@ -35,7 +37,28 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name_en' => 'required|max:255',
+            'name_fr' => 'required|max:255',
+            'name_ar' => 'required|max:255',
+            'photo'   => 'required|max:255',
+        ]);
+        if($request->hasFile('photo')){
+            $number = mt_rand(1, 999999);
+            $image = $request->file('photo');
+            $destinationPath = 'category_photo';
+            $image->move($destinationPath, $number . $image->getClientOriginalName());
+            $photo =$destinationPath . "/" . $number . $image->getClientOriginalName();
+
+        }
+        Category::create([
+            'name_en'=>$request->name_en,
+            'name_fr'=>$request->name_fr,
+            'name_ar'=>$request->name_ar,
+            'photo'  =>$photo,
+            'statu'  => '0',
+        ]);
+        return redirect()->route('category.index')->with('added','category added seccessfully');
     }
 
     /**

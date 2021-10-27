@@ -29,11 +29,11 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Sports Table</h4>
+            <h4 class="card-title">@lang('table categories')</h4>
             <p class="card-description">
                 <!-- Button trigger modal -->
-            <a href="{{route('categories.create')}}" class="btn btn-dark" >
-               Ajoute Sport
+            <a href="{{route('category.create')}}" class="btn btn-dark" >
+               @lang('add category')
             </a>
 
 
@@ -43,13 +43,13 @@
                     <thead>
                         <tr>
                             <th>
-                                Photo
+                                @lang('photo')
                             </th>
                             <th>
-                                Nom
+                                @lang('name')
                             </th>
                             <th>
-                                Actions
+                                @lang('actions')
                             </th>
 
                         </tr>
@@ -61,21 +61,16 @@
                                 <img src="{{asset($item->photo)}}" alt="">
                             </td>
                             <td class="py-1">
-                                {{$item->name}}
+                                {{$item->name_en}}
                             </td>
                             <td class="d-flex">
 
 
 
-
-                                {{-- <button type="button" class="btn btn-warning p-1 mr-2" data-toggle="modal" data-target="#Modal1">
-                                     <i class="ti-pencil text-white "></i>
-                                 </button> --}}
-
-                                <form action="{{ route('categories.destroy', [$item->id?? '']) }}" method="post">
+                                <form action="{{ route('category.destroy', [$item->id?? '']) }}" method="post">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-danger p-2 text-white delete-confirm" data-name="{{ $item->name }}" type="submit">
+                                    <button class="btn btn-danger p-2 text-white delete-confirm" data-name="{{ $item->name_en }}" type="submit">
                                         <i class="ti-trash "></i>
                                     </button>
                                 </form>
@@ -86,7 +81,7 @@
                         </tr>
                         @empty
                         <tr class="text-center">
-                            <td colspan="3">No record
+                            <td colspan="3">@lang('No record')
                             </td>
                             </tr>
                         @endforelse

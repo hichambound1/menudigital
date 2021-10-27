@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="{{asset('dash/css/style.css')}}">
   <link rel="stylesheet" href="{{asset('css/dropify.css')}}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}" />
+  {{-- <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}" /> --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" integrity="sha512-2eMmukTZtvwlfQoG8ztapwAH5fXaQBzaMqdljLopRSA0i6YKM8kBAOrSSykxu9NN9HrtD45lIqfONLII2AFL/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
