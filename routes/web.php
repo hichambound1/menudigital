@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('dashboard')->group(function () {
+
+    Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.home');
 });
 Route::resource('user', UserController::class);
 Route::resource('dish', DishController::class);
