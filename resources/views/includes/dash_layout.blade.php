@@ -63,8 +63,8 @@
     <!-- Custom js for this page-->
     <script src="{{asset('dash/js/dashboard.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-{{--
-    <script>
+
+     <script>
         $('.delete-confirm').click(function (event) {
             var form = $(this).closest("form");
             var name = $(this).data("name");
@@ -83,7 +83,7 @@
                 });
         });
 
-    </script> --}}
+    </script>
     <!-- End custom js for this page-->
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js" integrity="sha512-Gs+PsXsGkmr+15rqObPJbenQ2wB3qYvTHuJO6YJzPe/dTLvhy0fmae2BcnaozxDo5iaF8emzmCZWbQ1XXiX2Ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 {{--
