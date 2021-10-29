@@ -57,7 +57,6 @@
                     <tbody>
                         @forelse ($admins as $item)
                         <tr>
-
                             <td class="py-1">
                                 {{$item->name}}
                             </td>
@@ -65,18 +64,26 @@
                                 {{$item->email}}
                             </td>
                             <td class="d-flex">
+                                <div class="dropdown">
+                                    <p class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <i class="ti-more"></i>
+                                    </p>
+                                    <div class="dropdown-menu shadow rounded" style="min-width: 72px !important;border:none" aria-labelledby="dropdownMenuButton">
+                                        <p class="dropdown-item" >
+                                          <form action="{{ route('admin.destroy', [$item->id?? '']) }}" method="post">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class=" text-danger delete-confirm" style="background: none;border:none" data-name="{{ $item->name_en }}" type="submit">
+                                                   Delete <i class="ti-trash text-danger"></i>
+                                                </button>
+                                            </form>
+                                        </p>
+                                        <p class="dropdown-item " style="padding: 7px;">
+                                            <a href="{{route('admin.edit',$item->id)}}" class="text-warning">Edit<i class="ti-pencil"></i></a>
+                                        </p>
 
-
-                                <a href="{{route('admin.edit',$item->id)}}" class="btn btn-warning p-2 text-white " > <i class="ti-pencil"></i></a>
-                                <form action="{{ route('admin.destroy', [$item->id?? '']) }}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="btn btn-danger p-2 text-white delete-confirm" data-name="{{ $item->name_en }}" type="submit">
-                                        <i class="ti-trash "></i>
-                                    </button>
-                                </form>
-
-
+                                    </div>
+                                </div>
                             </td>
 
                         </tr>

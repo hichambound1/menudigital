@@ -20,7 +20,7 @@
     + Color Functions Mixins
     + Badge Mixins
     + Blockquote Mixins
-    
+
   * Core Styles
     + Reset Styles
     + Fonts
@@ -21365,3 +21365,10 @@ dl li {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+.dropdown .dropdown-toggle:after{
+    content: '' !important;
+}
+.dropdown-menu{
+    min-width: none !important;
+    width:71px !important ;
+}
