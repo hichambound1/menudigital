@@ -7,41 +7,39 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    @lang('add category')
+                    @lang('add admin')
                 </div>
-                <form class="forms-sample" method="POST"  action="{{route('category.update',$category)}}" enctype="multipart/form-data">
+                <form class="forms-sample" method="POST"  action="{{route('admin.update',$admin)}}" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
                     <div class="form-group">
                         <label>@lang('name')</label>
-                        <input type="text" id="name_en" value="{{$category->name_en}}"  name="name_en" class="form-control" placeholder="name_en">
-                        @error('name_en')
+                        <input type="text" id="name" value="{{$admin->name}}"  name="name" class="form-control" placeholder="name">
+                        @error('name')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>@lang('name')</label>
-                        <input type="text" id="name_ar" value="{{$category->name_ar}}"  name="name_ar" class="form-control" placeholder="name_ar">
-                        @error('name_ar')
+                        <label>@lang('email')</label>
+                        <input type="email" id="email" value="{{$admin->email}}"  name="email" class="form-control" placeholder="email">
+                        @error('email')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
+                    {{-- <div class="form-group">
+                        <label>@lang('password')</label>
+                        <input type="password" id="password"   name="password" class="form-control" placeholder="********">
+                        @error('password')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>@lang('name')</label>
-                        <input type="text" id="name_fr" value="{{$category->name_fr}}"  name="name_fr" class="form-control" placeholder="name_fr">
-                        @error('name_fr')
+                        <label>@lang('confirm password')</label>
+                        <input type="password" id="password_confirmation"   name="password_confirmation" class="form-control" placeholder="********">
+                        @error('password_confirmation')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>Photo</label>
-
-                        <input type="file" name="photo"  data-default-file="{{asset($category->photo)}}" id="upload" class="form-control dropify ">
-                        @error('photo')
-                        <p class="text-danger">{{$message}}</p>
-                        @enderror
-                    </div>
-                    {{-- <div id="upload-demo" style=" display:none"></div> --}}
+                    </div> --}}
                     <button type="submit" class="btn btn-success mr-2  upload-result">@lang('add')</button>
 
                 </form>
