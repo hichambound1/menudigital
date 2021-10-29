@@ -7,36 +7,94 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    @lang('add category')
+                    @lang('add dish')
                 </div>
-                <form class="forms-sample" method="POST"  action="{{route('category.update',$category)}}" enctype="multipart/form-data">
+                <form class="forms-sample" method="POST"  action="{{route('dish.update',$dish)}}" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
                     <div class="form-group">
                         <label>@lang('name')</label>
-                        <input type="text" id="name_en" value="{{$category->name_en}}"  name="name_en" class="form-control" placeholder="name_en">
+                        <input type="text" id="name_en" value="{{$dish->name_en}}"  name="name_en" class="form-control" placeholder="name_en">
                         @error('name_en')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label>@lang('name')</label>
-                        <input type="text" id="name_ar" value="{{$category->name_ar}}"  name="name_ar" class="form-control" placeholder="name_ar">
+                        <input type="text" id="name_ar" value="{{$dish->name_ar}}"  name="name_ar" class="form-control" placeholder="name_ar">
                         @error('name_ar')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label>@lang('name')</label>
-                        <input type="text" id="name_fr" value="{{$category->name_fr}}"  name="name_fr" class="form-control" placeholder="name_fr">
+                        <input type="text" id="name_fr" value="{{$dish->name_fr}}"  name="name_fr" class="form-control" placeholder="name_fr">
                         @error('name_fr')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
+
+
+                    <div class="form-group">
+                        <label>@lang('description')</label>
+                        <input type="text" id="description_fr" value="{{$dish->description_fr}}"  name="description_fr" class="form-control" placeholder="description_fr">
+                        @error('description_fr')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>@lang('description')</label>
+                        <input type="text" id="description_en" value="{{$dish->description_en}}"  name="description_en" class="form-control" placeholder="description_en">
+                        @error('description_en')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>@lang('description')</label>
+                        <input type="text" id="description_ar" value="{{$dish->description_ar}}"  name="description_ar" class="form-control" placeholder="description_ar">
+                        @error('description_ar')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>@lang('ingredients')</label>
+                        <textarea name="ingredients_en" class="form-control" placeholder="ingredients_en">{{old('ingredients_en')}}</textarea>
+                        @error('ingredients_en')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>@lang('ingredients')</label>
+                        <textarea name="ingredients_fr" class="form-control" placeholder="ingredients_fr">{{old('ingredients_fr')}}</textarea>
+                        @error('ingredients_fr')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>@lang('ingredients')</label>
+                        <textarea name="ingredients_ar" class="form-control" placeholder="ingredients_ar">{{old('ingredients_ar')}}</textarea>
+                        @error('ingredients_ar')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
+                    {{-- category --}}
+                    <div class="form-group">
+                        <label>@lang('ingredients')</label>
+                        <select name="category">
+                            @forelse ($categories as $item)
+                                <option @if ($dish->category_id==$item->id) selected @endif value="{{$item->id}}">{{$itemm->name_en}}</option>
+                            @empty
+                                <option value="">@lang('no record')</option>
+                            @endforelse
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label>Photo</label>
 
-                        <input type="file" name="photo"  data-default-file="{{asset($category->photo)}}" id="upload" class="form-control dropify ">
+                        <input type="file" name="photo"  data-default-file="{{asset($dish->photo)}}" id="upload" class="form-control dropify ">
                         @error('photo')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
