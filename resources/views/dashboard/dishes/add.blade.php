@@ -9,11 +9,7 @@
                 <div class="card-title">
                     @lang('add dish')
                 </div>
-                @if($errors)
-            @foreach ($errors->all() as $error)
-                <div class="text-red">{{ $error }}</div>
-            @endforeach
-        @endif
+               
                 <form class="forms-sample" method="POST"  action="{{route('dish.store')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">

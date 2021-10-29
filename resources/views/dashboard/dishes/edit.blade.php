@@ -9,6 +9,11 @@
                 <div class="card-title">
                     @lang('add dish')
                 </div>
+                 @if($errors)
+            @foreach ($errors->all() as $error)
+                <div class="text-red">{{ $error }}</div>
+            @endforeach
+        @endif
                 <form class="forms-sample" method="POST"  action="{{route('dish.update',$dish)}}" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
@@ -60,21 +65,21 @@
 
                     <div class="form-group">
                         <label>@lang('ingredients')</label>
-                        <textarea name="ingredients_en" class="form-control" placeholder="ingredients_en">{{old('ingredients_en')}}</textarea>
+                        <textarea name="ingredients_en" class="form-control" placeholder="ingredients_en">{{$dish->ingredients_en}}</textarea>
                         @error('ingredients_en')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label>@lang('ingredients')</label>
-                        <textarea name="ingredients_fr" class="form-control" placeholder="ingredients_fr">{{old('ingredients_fr')}}</textarea>
+                        <textarea name="ingredients_fr" class="form-control" placeholder="ingredients_fr">{{$dish->ingredients_fr}}</textarea>
                         @error('ingredients_fr')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label>@lang('ingredients')</label>
-                        <textarea name="ingredients_ar" class="form-control" placeholder="ingredients_ar">{{old('ingredients_ar')}}</textarea>
+                        <textarea name="ingredients_ar" class="form-control" placeholder="ingredients_ar">{{$dish->ingredients_ar}}</textarea>
                         @error('ingredients_ar')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
@@ -82,13 +87,28 @@
                     {{-- category --}}
                     <div class="form-group">
                         <label>@lang('ingredients')</label>
-                        <select name="category">
+                        <select name="category" class="form-control">
                             @forelse ($categories as $item)
-                                <option @if ($dish->category_id==$item->id) selected @endif value="{{$item->id}}">{{$itemm->name_en}}</option>
+                                <option @if ($dish->category_id==$item->id) selected @endif value="{{$item->id}}">{{$item->name_en}}</option>
                             @empty
                                 <option value="">@lang('no record')</option>
                             @endforelse
                         </select>
+                    </div>
+
+                      <div class="form-group">
+                        <label>@lang('price')</label>
+                        <input type="number" value="{{$dish->prix}}" min="0.00" name="price" class="form-control ">
+                        @error('price')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>@lang('solde')</label>
+                        <input type="number" value="{{$dish->solde}}" min="0.00" name="solde" class="form-control">
+                        @error('solde')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
 
                     <div class="form-group">
