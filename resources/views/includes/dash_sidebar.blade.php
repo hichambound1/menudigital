@@ -26,6 +26,12 @@
           <span class="menu-title">@lang('dishes')</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('admin.index')}}">
+          <i class="ti-basketball menu-icon"></i>
+          <span class="menu-title">@lang('admins')</span>
+        </a>
+      </li>
 
 
     </ul>
