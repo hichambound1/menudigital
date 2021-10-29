@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dish;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class DishController extends Controller
 {
@@ -14,7 +15,8 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        $dishes= Dish::with('category')->get();
+        return view('dashboard.dishes.index',['dishes'=>$dishes]);
     }
 
     /**
@@ -24,7 +26,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.dishes.add');
     }
 
     /**
@@ -57,7 +59,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
+        return view('dashboard.dishes.edit',['dish'=>$dish]);
     }
 
     /**
@@ -80,6 +82,10 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+        if (File::exists($dish->photo)) {
+            unlink($dish->photo);
+        }
+        $dish->delete();
+        return redirect()->back()->with('deleted','categories deleted');
     }
 }

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Dish extends Model
 {
     use HasFactory;
+    protected $fillable = [
+
+    ];
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

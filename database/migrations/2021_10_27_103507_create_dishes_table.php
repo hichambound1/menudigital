@@ -24,6 +24,7 @@ class CreateDishesTable extends Migration
             $table->string('prix');
             $table->string('solde');
             $table->string('statu');
+            $table->string('photo');
             $table->string('ingredients_en');
             $table->string('ingredients_fr');
             $table->string('ingredients_ar');
