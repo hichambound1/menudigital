@@ -79,7 +79,10 @@
                                             </form>
                                         </p>
                                         <p class="dropdown-item " style="padding: 7px;">
-                                            <a href="{{route('category.edit',$item->id)}}" class="text-warning">Edit<i class="ti-pencil"></i></a>
+                                            <a href="{{route('category.edit',$item->id)}}" class="text-warning">Edit<i class="ti-pencil p-2"></i></a>
+                                        </p>
+                                        <p class="dropdown-item " style="padding: 7px;">
+                                            <a href="{{route('category.show',$item->id)}}" class="text-info">Details<i class="ti-more p-1 "></i></a>
                                         </p>
 
                                     </div>
