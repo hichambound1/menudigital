@@ -33,6 +33,7 @@ class User extends Authenticatable
         'email',
         'statu',
         'password',
+        'role_id',
     ];
 
     /**
@@ -57,5 +58,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Dish::class);
     }
-    
+
 }

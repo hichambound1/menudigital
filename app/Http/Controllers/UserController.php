@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -38,7 +39,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request,[
+      $this->validate($request,[
             'name_en'        => 'required|max:255',
             'name_fr'        => 'required|max:255',
             'name_ar'        => 'required|max:255',
@@ -60,6 +61,13 @@ class UserController extends Controller
             $image->move($destinationPath, $number . $image->getClientOriginalName());
             $photo =$destinationPath . "/" . $number . $image->getClientOriginalName();
         }
+
+        $role = Role::where('name','user')->first();
+        if($role== NULL){
+            $role=Role::create([
+                'name'=>'user'
+            ]);
+        }
         User::create([
             'name_en'=>$request->name_en,
             'name_fr'=>$request->name_fr,
@@ -75,6 +83,7 @@ class UserController extends Controller
             'email'=>$request->email,
             'logo'=>$photo,
             'statu'  => '0',
+            'role_id'  => $role->id
         ]);
         return redirect()->route('user.index')->with('added','user added seccessfully');
 
