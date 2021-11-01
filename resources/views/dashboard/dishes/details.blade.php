@@ -132,9 +132,7 @@
                     </div>
 
                 </div>
-                <div class="row my-2
-                ">
-
+                <div class="row my-2">
                         @foreach ($dish->media as $item)
                             <div class="col-md-4">
                                 <img src="{{asset($item->photo)}}" width="100%" alt="">
