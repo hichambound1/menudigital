@@ -43,7 +43,7 @@ class RoleController extends Controller
         Role::create(
             $request->all()
         );
-        return redirect('roles')->with('added',' role added');
+        return redirect('role')->with('added',' role added');
 
     }
 
@@ -66,7 +66,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('dashboard.roles.update',['role'=>$role]);
+        return view('dashboard.roles.edit',['role'=>$role]);
     }
 
     /**
@@ -78,10 +78,13 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
+        $this->validate($request,[
+            'name' => 'required|max:255',
+        ]);
         $role->update([
             'name'=>$request->name
         ]);
-        return redirect('roles')->with('updated',' role updated');
+        return redirect('role')->with('updated',' role updated');
 
     }
 
@@ -91,11 +94,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        $roles =Role::all();
-        $role =Role::find($id);
         $role->delete();
-        return redirect()->back();
+        return redirect()->back()->with('deleted',' role deleted');
     }
 }
