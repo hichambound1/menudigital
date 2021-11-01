@@ -90,7 +90,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+        return view('dashboard.dishes.details',['dish'=>$dish]);
     }
 
     /**

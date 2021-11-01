@@ -87,6 +87,9 @@
                                         <p class="dropdown-item " style="padding: 7px;">
                                             <a href="{{route('dish.edit',$item->id)}}" class="text-warning">Edit<i class="ti-pencil"></i></a>
                                         </p>
+                                        <p class="dropdown-item " style="padding: 7px;">
+                                            <a href="{{route('dish.show',$item->id)}}" class="text-info">Details<i class="ti-more"></i></a>
+                                        </p>
 
                                     </div>
                                 </div>
