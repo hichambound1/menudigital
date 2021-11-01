@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Media extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'photo',
+        'dish_id',
+    ];
+    public function dish()
+    {
+        return $this->belongsTo(Dish::class);
+    }
 }

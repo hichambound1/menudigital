@@ -27,6 +27,7 @@ Route::prefix('dashboard')->group(function () {
 
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.home');
 });
+Route::post('/dish/photo', [DishController::class, 'add_photo'])->name('dish.photo');
 Route::resource('user', UserController::class);
 Route::resource('dish', DishController::class);
 Route::resource('category', CategoryController::class);

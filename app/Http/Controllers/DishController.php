@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Dish;
+use App\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -176,5 +177,23 @@ class DishController extends Controller
         }
         $dish->delete();
         return redirect()->back()->with('deleted','categories deleted');
+    }
+    public function add_photo(Request $request)
+    {
+        $this->validate($request,[
+            'photo'         => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        if($request->hasFile('photo')){
+            $number = mt_rand(1, 999999);
+            $image = $request->file('photo');
+            $destinationPath = 'dishes_photo';
+            $image->move($destinationPath, $number . $image->getClientOriginalName());
+            $photo =$destinationPath . "/" . $number . $image->getClientOriginalName();
+        }
+        Media::create([
+            'photo' => $photo,
+            'dish_id'=>$request->dish,
+        ]);
+        return back()->with('added','photo added');
     }
 }

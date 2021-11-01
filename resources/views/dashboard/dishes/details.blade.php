@@ -110,6 +110,38 @@
 
                 </div>
             </div>
+            <div class="my-5">
+                <div class="card w-100">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h4 class="text-capitalize">@lang('add to gallery')</h4>
+                        </div>
+                        <form method="post" action="{{route('dish.photo')}}" enctype="multipart/form-data" class="forms-sample w-100">
+                            @csrf
+                            <input type="hidden"  name="dish" value="{{$dish->id}}">
+                            <div class="form-group">
+                              <label for="">PHOTO</label>
+                              <input type="file"  name="photo" class="form-control">
+                              @error('photo')
+                                {{$message}}
+                              @enderror
+                            </div>
+                            <button type="submit" class="btn btn-primary text-capitalize mr-2">@lang('add')</button>
+
+                          </form>
+                    </div>
+
+                </div>
+                <div class="row my-2
+                ">
+
+                        @foreach ($dish->media as $item)
+                            <div class="col-md-4">
+                                <img src="{{asset($item->photo)}}" width="100%" alt="">
+                            </div>
+                        @endforeach
+                    </div>
+            </div>
         </div>
     </div>
 </div>
