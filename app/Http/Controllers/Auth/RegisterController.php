@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -50,7 +51,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name_en' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -64,9 +65,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $role= Role::where('name','user')->first();
+        if($role== NULL){
+            $role= Role::create([
+                'name'=>'user'
+            ]);
+        }
         return User::create([
-            'name' => $data['name'],
+            'name_en' => $data['name_en'],
             'email' => $data['email'],
+            'statu' => 0,
+            'role_id'  => $role->id,
             'password' => Hash::make($data['password']),
         ]);
     }
