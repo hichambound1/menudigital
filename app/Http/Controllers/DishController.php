@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Dish;
 use App\Models\Media;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class DishController extends Controller
@@ -77,7 +78,7 @@ class DishController extends Controller
             'ingredients_fr'=>$request->ingredients_fr,
             'ingredients_ar'=>$request->ingredients_ar,
             'rate'=>'0',
-            'user_id'=>1,
+            'user_id'=>Auth::user()->id,
             'category_id'=>$request->category,
         ]);
         return redirect()->route('dish.index')->with('added','dish added seccessfully');

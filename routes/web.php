@@ -24,16 +24,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('dashboard')->group(function () {
+Route::middleware(['auth'])->group(function () {
 
-    Route::get('dashboard/home', [DashboardController::class, 'index'])->name('dashboard.home');
+        Route::get('dashboard/home', [DashboardController::class, 'index'])->name('dashboard.home');
+   
+
+    Route::post('/dish/photo', [DishController::class, 'add_photo'])->name('dish.photo');
+    Route::resource('user', UserController::class);
+    Route::resource('dish', DishController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('admin', AdminController::class);
+    Route::resource('role', RoleController::class);
 });
-Route::post('/dish/photo', [DishController::class, 'add_photo'])->name('dish.photo');
-Route::resource('user', UserController::class);
-Route::resource('dish', DishController::class);
-Route::resource('category', CategoryController::class);
-Route::resource('admin', AdminController::class);
-Route::resource('role', RoleController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

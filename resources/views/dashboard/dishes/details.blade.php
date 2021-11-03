@@ -4,6 +4,26 @@
 <div class="content-wrapper">
     <div class="col-md-12 grid-margin stretch-card mx-auto">
         <div class="row">
+            <div class="col-md-12">
+                @if (session('added'))
+                    <div class="alert alert-success">
+                        {{ session('added') }}
+                        <span class="close" data-dismiss="alert">&times;</span>
+                    </div>
+                @endif
+                @if (session('updated'))
+                    <div class="alert alert-success">
+                        {{ session('updated') }}
+                        <span class="close" data-dismiss="alert">&times;</span>
+                    </div>
+                @endif
+                @if (session('deleted'))
+                    <div class="alert alert-danger">
+                        {{ session('deleted') }}
+                        <span class="close" data-dismiss="alert">&times;</span>
+                    </div>
+                @endif
+            </div>
             <div class="card my-2">
                 <div class="card-body">
                     <div class="card-title">
