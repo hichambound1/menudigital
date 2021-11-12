@@ -27,7 +27,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
 
         Route::get('dashboard/home', [DashboardController::class, 'index'])->name('dashboard.home');
-   
+
 
     Route::post('/dish/photo', [DishController::class, 'add_photo'])->name('dish.photo');
     Route::resource('user', UserController::class);
