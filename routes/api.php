@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\CategoryController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\v1\DishController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -11,13 +11,15 @@ use Illuminate\Support\Facades\Route;
  // public auth routes
  Route::post('/register', [AuthController::class, 'register']);
  Route::post('/login', [AuthController::class, 'login']);
+ Route::get('/category', [CategoryController::class, 'index']);
+ Route::get('/alldishes', [DishController::class, 'alldishes']);
 
-// protected route
+ // protected route
 
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/category', [CategoryController::class, 'index']);
+ Route::middleware(['auth:sanctum'])->group(function () {
 
-
+    Route::get('/mydishes/{id}', [DishController::class, 'mydishes']);
+    Route::post('/dish/store', [DishController::class, 'store']);
 
 
     Route::post('/logout', [AuthController::class, 'logout']);
