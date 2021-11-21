@@ -17,6 +17,7 @@ class Dish extends Model
             'description_ar',
             'prix',
             'solde',
+            'currency',
             'statu',
             'photo',
             'ingredients_en',

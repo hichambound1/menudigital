@@ -15,6 +15,8 @@ class DishController extends Controller
     {
         $this->validate($request,[
             'name_en'       => 'required|max:255',
+            'user_id'       => 'required|max:255',
+            'currency'       => 'required|max:255',
             'photo'         => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             // 'name_ar'       => 'required|max:255',
             // 'name_fr'       => 'required|max:255',
@@ -45,12 +47,13 @@ class DishController extends Controller
             'prix'=>$request->price,
             'solde'=>$request->price,
             'statu'=>'0',
+            'currency'=>'0',
             'photo'=>$photo,
             'ingredients_en'=>$request->ingredients_en,
             'ingredients_fr'=>$request->ingredients_en,
             'ingredients_ar'=>$request->ingredients_en,
             'rate'=>'0',
-            'user_id'=>Auth::user()->id,
+            'user_id'=>$request->user_id,
             'category_id'=>$request->category,
         ]);
 
