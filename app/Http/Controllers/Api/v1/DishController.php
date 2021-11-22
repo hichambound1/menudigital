@@ -8,6 +8,7 @@ use App\Models\Dish;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class DishController extends Controller
 {
@@ -67,5 +68,13 @@ class DishController extends Controller
     {
         $dishes = Dish::with('category')->get();
         return  DishResource::collection($dishes);
+    }
+    public function delete($id)
+    {
+        $dish = Dish::find($id);
+        if (File::exists($dish->photo)) {
+            unlink($dish->photo);
+        }
+        return  $dish->delete();
     }
 }

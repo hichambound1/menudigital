@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/mydishes/{id}', [DishController::class, 'mydishes']);
     Route::post('/dish/store', [DishController::class, 'store']);
+    Route::delete('/dish/delete/{id}', [DishController::class, 'delete']);
 
 
     Route::post('/logout', [AuthController::class, 'logout']);
