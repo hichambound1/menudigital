@@ -5,7 +5,6 @@ use App\Http\Controllers\Api\v1\CategoryController;
 use App\Http\Controllers\Api\v1\DishController;
 use Illuminate\Support\Facades\Route;
 
-
 // public routes
 
  // public auth routes
@@ -20,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/mydishes/{id}', [DishController::class, 'mydishes']);
     Route::post('/dish/store', [DishController::class, 'store']);
-
 
     Route::post('/logout', [AuthController::class, 'logout']);
 
