@@ -46,7 +46,7 @@ class DishController extends Controller
             'description_fr'=>$request->description_en,
             'description_ar'=>$request->description_en,
             'prix'=>$request->price,
-            // 'solde'=>$request->price,
+            'solde'=>$request->price,
             'statu'=>'0',
             'currency'=>$request->currency,
             'photo'=>$photo,
