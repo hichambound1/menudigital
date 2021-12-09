@@ -159,5 +159,9 @@ class DishController extends Controller
     {
        
      return Media::where("dish_id",$id)->get();   
-    }       
+    }  
+    public function oneresto($id)
+    {
+        return User::find($id);
+    }     
 }

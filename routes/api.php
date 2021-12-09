@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
  Route::post('/login', [AuthController::class, 'login']);
  Route::get('/category', [CategoryController::class, 'index']);
  Route::get('/alldishes', [DishController::class, 'alldishes']);
+ Route::get('/oneresto/{id}', [DishController::class, 'oneresto']);
 
  // protected route
  Route::get('/dish/photos/{id}', [DishController::class, 'dish_photos']);
