@@ -15,11 +15,14 @@ use Illuminate\Support\Facades\Route;
  Route::get('/alldishes', [DishController::class, 'alldishes']);
 
  // protected route
+ Route::get('/dish/photos/{id}', [DishController::class, 'dish_photos']);
 
+ Route::get('/dish/{id}', [DishController::class, 'dish']);
  Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/mydishes/{id}', [DishController::class, 'mydishes']);
     Route::post('/dish/store', [DishController::class, 'store']);
+    Route::post('/add_photo', [DishController::class, 'add_photo']);
     Route::put('/dish/update/{id}', [DishController::class, 'update']);
     Route::put('/user/update/', [AuthController::class, 'update']);
     Route::delete('/dish/delete/{id}', [DishController::class, 'delete']);

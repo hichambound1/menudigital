@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DishResource;
 use App\Models\Dish;
+use App\Models\Media;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -131,4 +132,32 @@ class DishController extends Controller
         }
         return  $dish->delete();
     }
+    public function dish($id)
+    {
+        return Dish::find($id);
+    }
+    public function add_photo(Request $request)
+    {
+        $this->validate($request,[
+            'photo'         => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'dish_id'       => 'required|max:255',
+        ]);
+        if($request->hasFile('photo')){
+            $number = mt_rand(1, 999999);
+            $image = $request->file('photo');
+            $destinationPath = 'dishes_photo';
+            $image->move($destinationPath, $number . $image->getClientOriginalName());
+            $photo =$destinationPath . "/" . $number . $image->getClientOriginalName();
+        }
+        Media::create([
+            'photo' => $photo,
+            'dish_id'=>$request->dish_id,
+        ]);
+        return Dish::find($request->dish_id)->media;
+    }
+    public function dish_photos($id)
+    {
+       
+     return Media::where("dish_id",$id)->get();   
+    }       
 }
