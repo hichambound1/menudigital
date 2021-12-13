@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 // public routes
 
  // public auth routes
+ Route::post('/send/email/forgetpassword', [AuthController::class, 'sendemailforgetpassword']);
+ Route::get('/email/forgetpassword/reset/{token}', [AuthController::class, 'resetpass'])->name('reset.password');
+ Route::put('update/thepass', [AuthController::class, 'updatepass'])->name('updatepass');
  Route::post('/register', [AuthController::class, 'register']);
  Route::post('/login', [AuthController::class, 'login']);
  Route::get('/category', [CategoryController::class, 'index']);

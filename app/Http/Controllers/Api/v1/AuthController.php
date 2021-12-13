@@ -5,10 +5,15 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+
 
 class AuthController extends Controller
 {
@@ -80,7 +85,7 @@ class AuthController extends Controller
             'message' => 'Logged out'
         ];
     }
-    public function update(Request $request)    
+    public function update(Request $request)
     {
         $this->validate($request,[
             'name_en'=>'required|max:255',
@@ -91,11 +96,11 @@ class AuthController extends Controller
             'phone'=> 'required|max:255',
             'address_en'=> 'required|max:255',
             'user_id'=> 'required|max:255',
-           
+
         ]);
-        
+
         $user =User::find($request->user_id);
-    
+
         if($request->hasFile('logo')){
             $number = mt_rand(1, 999999);
             $image = $request->file('logo');
@@ -132,5 +137,60 @@ class AuthController extends Controller
             $user->save();
         }
         return $user;
+    }
+
+
+    public function sendemailforgetpassword(Request $request)
+    {
+        $this->validate($request,[
+            'email' => 'required|email|exists:users',
+        ]);
+        DB::table('password_resets')->insert([
+            'email' => $request->email,
+            'token' => Str::random(60),  //change 60 to any length you want
+            'created_at' => Carbon::now()
+        ]);
+        $tokenData = DB::table('password_resets')
+        ->where('email', $request->email)->first();
+
+        $details = [
+            'title' => 'Forget Password',
+            'body' => 'This is for reset your password',
+            'token' => $tokenData->token
+        ];
+
+        Mail::to($request->email)->send(new \App\Mail\ForgetPassword($details));
+
+        return 'A fresh verification link has been sent to your email address';
+    }
+    public function resetpass($token)
+    {
+        $tokenData = DB::table('password_resets')
+        ->where('token', $token)->first();
+
+        if ( !$tokenData ) return redirect()->back();
+
+        return redirect('http://localhost:3000/resetpassword/'.$tokenData->token);
+    }
+    public function updatepass(Request $request)
+    {
+        $this->validate($request,[
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+        $tokenData = DB::table('password_resets')
+        ->where('token', $request->token)->first();
+
+        if($tokenData){
+                $user= User::where('email',$tokenData->email)->first();
+                $user->update([
+                    'password'=>bcrypt($request->password),
+                ]);
+                DB::table('password_resets')->where('email', $user->email)->delete();
+            return true;
+
+        }else{
+            return false;
+        }
+
     }
 }
