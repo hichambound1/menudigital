@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Route;
     Route::put('/dish/update/{id}', [DishController::class, 'update']);
     Route::put('/user/update/', [AuthController::class, 'update']);
     Route::delete('/dish/delete/{id}', [DishController::class, 'delete']);
+    Route::delete('/delete/gallery/{id}', [DishController::class, 'delete_gallery']);
 
 
     Route::post('/logout', [AuthController::class, 'logout']);

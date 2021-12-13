@@ -132,6 +132,14 @@ class DishController extends Controller
         }
         return  $dish->delete();
     }
+    public function delete_gallery($id)
+    {
+        $dish = Media::find($id);
+        if (File::exists($dish->photo)) {
+            unlink($dish->photo);
+        }
+        return  $dish->delete();
+    }
     public function dish($id)
     {
         return Dish::find($id);
@@ -157,11 +165,11 @@ class DishController extends Controller
     }
     public function dish_photos($id)
     {
-       
-     return Media::where("dish_id",$id)->get();   
-    }  
+
+     return Media::where("dish_id",$id)->get();
+    }
     public function oneresto($id)
     {
         return User::find($id);
-    }     
+    }
 }
