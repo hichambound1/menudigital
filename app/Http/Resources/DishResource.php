@@ -23,6 +23,7 @@ class DishResource extends JsonResource
             'statu' => $this->statu,
             'photo' => $this->photo,
             'user_id' => $this->user_id,
+            'currency' => $this->currency,
             'category'=>new CategoryResource($this->category)
         ];
         // return parent::toArray($request);
