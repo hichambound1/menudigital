@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class);
     Route::resource('dish', DishController::class);
     Route::resource('category', CategoryController::class);
-    Route::resource('admin', AdminController::class);
+    // Route::resource('admin', AdminController::class);
     Route::resource('role', RoleController::class);
 });
 Auth::routes();
