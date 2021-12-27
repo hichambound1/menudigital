@@ -195,15 +195,24 @@
                                     <div class="d-flex align-items-start mt-3 mt-sm-0">
                                         <div class="flex-shrink-0">
                                             <div class="avatar-xl me-3">
-                                                <img src="assets/images/users/avatar-2.jpg" alt="" class="img-fluid rounded-circle d-block">
+                                                <img src="{{asset($user->logo)}}" alt="" class="img-fluid -block">
                                             </div>
                                         </div>
                                         <div class="flex-grow-1">
                                             <div>
-                                                <h5 class="font-size-16 mb-1">Name (en) : {{$user->name_en}}</h5>
-                                                <h5 class="font-size-16 mb-1">Name (ar) : {{$user->name_ar}}</h5>
-                                                <h5 class="font-size-16 mb-1">Name (fr) : {{$user->name_fr}}</h5>
-                                                <p class="text-muted font-size-13">Full Stack Developer</p>
+                                                <h5 class="font-size-16 mb-1">Name (en) :<br> <div class="font-size-12">
+                                                    {{$user->name_en}}
+                                                </div>
+                                                </h5>
+                                                <h5 class="font-size-16 mb-1">Name (ar) :<br> <div class="font-size-12">
+                                                    {{$user->name_ar}}
+                                                </div>
+                                                </h5>
+                                                <h5 class="font-size-16 mb-1">Name (fr) :<br> <div class="font-size-12">
+                                                    {{$user->name_fr}}
+                                                </div>
+                                                </h5>
+
 
                                                 <div class="d-flex flex-wrap align-items-start gap-2 gap-lg-3 text-muted font-size-13">
                                                     <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i>{{$user->email}}</div>

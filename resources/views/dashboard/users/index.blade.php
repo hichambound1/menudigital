@@ -61,7 +61,7 @@
 
                         </div>
                         <div class="card-body">
-                            <table id="datatable2" class="table table-bordered dt-responsive nowrap w-100">
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
                                 <thead>
                                 <tr>
                                     <th>
@@ -153,6 +153,14 @@
                 });
         });
 
+    </script>
+    <script>
+        $('#datatable').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'excel', 'pdf'
+            ]
+        } );
     </script>
 @endpush
 @endsection
