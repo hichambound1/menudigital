@@ -39,12 +39,12 @@
                         <span data-key="t-dashboard ">Dishes</span>
                     </a>
                 </li>
-                {{-- <li>
-                    <a href="{{route('admin.index')}}">
+                <li>
+                    <a href="{{route('admins.index')}}">
                         <i class="bx bx-user-circle"></i>
                         <span data-key="t-dashboard ">Admin</span>
                     </a>
-                </li> --}}
+                </li>
 
 
 

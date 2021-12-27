@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+// use App\Http\Controllers\AdminController;
+
+use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DishController;
@@ -33,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class);
     Route::resource('dish', DishController::class);
     Route::resource('category', CategoryController::class);
-    // Route::resource('admin', AdminController::class);
+    Route::resource('admins', AdminsController::class);
     Route::resource('role', RoleController::class);
 });
 Auth::routes();

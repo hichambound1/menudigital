@@ -16,7 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users= User::all();
+        $role= Role::where('name','user')->first();
+
+        $users= User::where('role_id',$role->id)->get();
         return view('dashboard.users.index',['users'=>$users]);
     }
 
