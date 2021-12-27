@@ -153,12 +153,12 @@ class DishController extends Controller
             'prix'=>$request->price,
             'solde'=>$request->solde,
             'statu'=>'0',
-            'currency'=>'$',
+            'currency'=>$request->currency,
             'ingredients_en'=>$request->ingredients_en,
             'ingredients_fr'=>$request->ingredients_fr,
             'ingredients_ar'=>$request->ingredients_ar,
             'rate'=>'0',
-            'user_id'=>1,
+            'user_id'=>Auth::user()->id,
             'category_id'=>$request->category,
         ]);
         if($request->hasFile('photo')){
