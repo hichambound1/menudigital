@@ -70,6 +70,12 @@
                         <span data-key="t-dashboard ">Roles</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('user.index')}}">
+                        <i data-feather="home"></i>
+                        <span data-key="t-dashboard ">Users</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
