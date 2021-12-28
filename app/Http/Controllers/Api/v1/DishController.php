@@ -48,7 +48,7 @@ class DishController extends Controller
             'description_ar'=>$request->description_en,
             'prix'=>$request->price,
             'solde'=>$request->price,
-            'statu'=>'0',
+            'statu'=>'1',
             'currency'=>$request->currency,
             'photo'=>$photo,
             'ingredients_en'=>$request->ingredients_en,
@@ -99,13 +99,12 @@ class DishController extends Controller
             'description_ar'=>$request->description_en,
             'prix'=>$request->price,
             'solde'=>$request->price,
-            'statu'=>'0',
+
             'currency'=>$request->currency,
             'ingredients_en'=>$request->ingredients_en,
             'ingredients_fr'=>$request->ingredients_en,
             'ingredients_ar'=>$request->ingredients_en,
             'rate'=>'0',
-            // 'user_id'=>$request->user_id,
             'category_id'=>$request->category,
         ]);
         if($request->hasFile('photo')){

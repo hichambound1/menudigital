@@ -102,7 +102,7 @@
                                             </form>
                                             <script>
                                                 function changedfun(id){
-                                                    alert(id);
+                                                    
                                                     document.getElementById(`etat${id}`).submit();
                                                 }
                                             </script>
