@@ -191,6 +191,9 @@
                                         @lang('category')
                                     </th>
                                     <th>
+                                        @lang('statu')
+                                    </th>
+                                    <th>
                                         @lang('actions')
                                     </th>
                                  </tr>
@@ -208,6 +211,26 @@
                                       </td>
                                       <td class="py-1">
                                         {{$item->category->name_en}}
+                                    </td>
+                                    <td class="py-1">
+
+                                          <form action="{{route('dishstatu',$item->id)}}" id="etat{{$item->id}}" method="post">
+                                              @method('PUT')
+                                              @csrf
+
+                                              <div class="form-check form-switch form-switch-lg mb-3" dir="ltr">
+                                                <input type="checkbox" name="etat" class="form-check-input" onchange="changedfun({{$item->id}})" id="customSwitchsizelg{{$item->id}}" @if ($item->statu==1)checked @endif >
+                                              </div>
+                                          </form>
+                                          <script>
+                                              function changedfun(id){
+                                                  alert(id);
+                                                  document.getElementById(`etat${id}`).submit();
+                                              }
+                                          </script>
+
+
+
                                     </td>
                                       <td class="">
                                          <div class="dropdown mt-4 mt-sm-0">

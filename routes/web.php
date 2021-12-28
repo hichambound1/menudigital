@@ -29,6 +29,9 @@ Route::get('/', function () {
 Route::middleware(['auth','isadmin'])->group(function () {
 
     Route::get('dashboard/home', [DashboardController::class, 'index'])->name('dashboard.home');
+    Route::put('categorystatu/{id}', [CategoryController::class, 'categorystatu'])->name('categorystatu');
+    Route::put('dishstatu/{id}', [DishController::class, 'dishstatu'])->name('dishstatu');
+    Route::put('userstatu/{id}', [UserController::class, 'userstatu'])->name('userstatu');
 
 
     Route::post('/dish/photo', [DishController::class, 'add_photo'])->name('dish.photo');

@@ -172,4 +172,18 @@ class UserController extends Controller
         $user->delete();
         return redirect()->back()->with('deleted','user deleted');
     }
+    public function userstatu(Request $request, $id)
+    {
+
+        $etat=0;
+        if($request->etat=='on'){
+            $etat=1;
+        }
+
+        User::where('id',$id)->update([
+            'statu'=>$etat,
+
+        ]);
+        return redirect()->back()->with('added','etat changed');
+    }
 }

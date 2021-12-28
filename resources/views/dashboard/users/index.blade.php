@@ -71,6 +71,9 @@
                                         @lang('name')
                                     </th>
                                     <th>
+                                        @lang('statu')
+                                    </th>
+                                    <th>
                                         @lang('actions')
                                     </th>
 
@@ -87,6 +90,26 @@
                                      <td class="py-1">
                                          {{$item->name_en}}
                                      </td>
+                                     <td class="py-1">
+                                        {{-- {{$item->statu}} --}}
+                                          <form action="{{route('userstatu',$item->id)}}" id="etat{{$item->id}}" method="post">
+                                              @method('PUT')
+                                              @csrf
+
+                                              <div class="form-check form-switch form-switch-lg mb-3" dir="ltr">
+                                                <input type="checkbox" name="etat" class="form-check-input" onchange="changedfun({{$item->id}})" id="customSwitchsizelg{{$item->id}}" @if ($item->statu==1)checked @endif >
+                                              </div>
+                                          </form>
+                                          <script>
+                                              function changedfun(id){
+
+                                                  document.getElementById(`etat${id}`).submit();
+                                              }
+                                          </script>
+
+
+
+                                    </td>
                                      <td class="">
                                         <div class="dropdown mt-4 mt-sm-0">
                                             <a href="#" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

@@ -200,4 +200,18 @@ class DishController extends Controller
         ]);
         return back()->with('added','photo added');
     }
+    public function dishstatu(Request $request, $id)
+    {
+
+        $etat=0;
+        if($request->etat=='on'){
+            $etat=1;
+        }
+
+        Dish::where('id',$id)->update([
+            'statu'=>$etat,
+
+        ]);
+        return redirect()->back()->with('added','etat changed');
+    }
 }
