@@ -284,6 +284,17 @@
                                         </select>
                                     </div>
                                     <div class="col-lg-6 mb-3">
+                                        <label for="example-date-input" class="form-label">@lang('category')</label>
+
+                                        <select name="user_id" class="form-control">
+                                            @forelse ($users as $item)
+                                                <option @if ($dish->category_id==$item->id) selected @endif value="{{$item->id}}">{{$item->name_en}}</option>
+                                            @empty
+                                                <option value="">@lang('no record')</option>
+                                            @endforelse
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6 mb-3">
                                         <label for="example-text-input"  class="form-label">@lang('photo')</label>
                                         <input type="file" id="photo"data-default-file="{{asset($dish->photo)}}" name="photo" class="form-control dropify">
                                         @error('photo')

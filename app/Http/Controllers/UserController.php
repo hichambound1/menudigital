@@ -84,7 +84,7 @@ class UserController extends Controller
             'password'=> bcrypt($request->password),
             'email'=>$request->email,
             'logo'=>$photo,
-            'statu'  => '0',
+            'statu'  => '1',
             'role_id'  => $role->id
         ]);
         return redirect()->route('user.index')->with('added','user added seccessfully');

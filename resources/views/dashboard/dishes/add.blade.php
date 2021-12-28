@@ -136,6 +136,24 @@
                                                 <option value="">@lang('no record')</option>
                                             @endforelse
                                         </select>
+                                        @error('category')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="example-date-input" class="form-label">@lang('user')</label>
+
+                                        <select name="user_id" class="form-control">
+                                            <option disabled selected>Choose user</option>
+                                            @forelse ($users as $item)
+                                                <option value="{{$item->id}}">{{$item->name_en}}</option>
+                                            @empty
+                                                <option value="">@lang('no record')</option>
+                                            @endforelse
+                                        </select>
+                                        @error('user_id')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                         <label for="example-text-input" class="form-label">@lang('photo')</label>

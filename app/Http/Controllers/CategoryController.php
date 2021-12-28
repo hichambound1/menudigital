@@ -57,7 +57,7 @@ class CategoryController extends Controller
             'name_fr'=>$request->name_fr,
             'name_ar'=>$request->name_ar,
             'photo'  =>$photo,
-            'statu'  => '0',
+            'statu'  => '1',
         ]);
         return redirect()->route('category.index')->with('added','category added seccessfully');
     }

@@ -188,6 +188,9 @@
                                         @lang('name')
                                     </th>
                                     <th>
+                                        @lang('user')
+                                    </th>
+                                    <th>
                                         @lang('category')
                                     </th>
                                     <th>
@@ -209,6 +212,9 @@
                                       <td >
                                           {{$item->name_en}}
                                       </td>
+                                      <td >
+                                          {{$item->user->name_en}}
+                                      </td>
                                       <td class="py-1">
                                         {{$item->category->name_en}}
                                     </td>
@@ -224,7 +230,7 @@
                                           </form>
                                           <script>
                                               function changedfun(id){
-                                                  alert(id);
+
                                                   document.getElementById(`etat${id}`).submit();
                                               }
                                           </script>
