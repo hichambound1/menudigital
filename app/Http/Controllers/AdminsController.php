@@ -99,38 +99,17 @@ class AdminsController extends Controller
 
         $this->validate($request,[
             'name_en' => 'required|max:255',
-            // 'name_fr' => 'required|max:255',
-            // 'name_ar' => 'required|max:255',
-            // 'description_ar' => 'required|max:255',
-            // 'description_fr' => 'required|max:255',
-            // 'description_en' => 'required|max:255',
-            // 'address_en'     => 'required|max:255',
-            // 'address_fr'     => 'required|max:255',
-            // 'address_ar'     => 'required|max:255',
-            // 'phone'          => 'required|max:255',
+           
             'email'          => 'string|email|max:255',
-            // 'logo'           => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        // if($request->hasFile('logo')){
-        //     $number = mt_rand(1, 999999);
-        //     $image = $request->file('logo');
-        //     $destinationPath = 'user_logo';
-        //     $image->move($destinationPath, $number . $image->getClientOriginalName());
-        //     $photo =$destinationPath . "/" . $number . $image->getClientOriginalName();
-        //     if (File::exists($user->logo)) {
-        //         unlink($user->logo);
-        //     }
-        // }
+
         $user->update([
             'name_en'=>$request->name_en,
             'name_fr'=>$request->name_fr,
             'name_ar'=>$request->name_ar,
 
         ]);
-        // if($request->hasFile('logo')){
-        //     $user->logo=$photo;
-        //     $user->save();
-        // }
+
         return redirect()->route('admins.index')->with('updated','admin updated seccessfully');
     }
     /**
