@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\CategoryController;
 use App\Http\Controllers\Api\v1\DishController;
+use App\Http\Controllers\Api\v1\NewslatterController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 
  // public auth routes
  Route::post('/send/email/forgetpassword', [AuthController::class, 'sendemailforgetpassword']);
+ Route::post('/news', [NewslatterController::class, 'store']);
  Route::get('/email/forgetpassword/reset/{token}', [AuthController::class, 'resetpass'])->name('reset.password');
  Route::put('update/thepass', [AuthController::class, 'updatepass'])->name('updatepass');
  Route::post('/register', [AuthController::class, 'register']);

@@ -11,11 +11,11 @@
              <div class="row">
                  <div class="col-12">
                      <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                         <h4 class="mb-sm-0 font-size-18">Roles</h4>
+                         <h4 class="mb-sm-0 font-size-18">Newslatter</h4>
 
                          <div class="page-title-right">
                              <ol class="breadcrumb m-0">
-                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Roles</a></li>
+                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Newslatter</a></li>
                                  <li class="breadcrumb-item active">List</li>
                              </ol>
                          </div>
@@ -49,9 +49,7 @@
              <h4 class="card-title">@lang('table roles')</h4>
              <p class="card-description">
                  <!-- Button trigger modal -->
-             <a href="{{route('role.create')}}" class="btn btn-dark" >
-                @lang('add role')
-             </a>
+
 
 
              <div class="row">
@@ -66,7 +64,7 @@
                                  <tr>
 
                                      <th>
-                                         @lang('name')
+                                         @lang('email')
                                      </th>
                                      <th>
                                          @lang('actions')
@@ -77,11 +75,11 @@
 
 
                                  <tbody>
-                                     @forelse ($roles as $item)
+                                     @forelse ($newslatters as $item)
                                  <tr>
 
                                       <td class="py-1">
-                                          {{$item->name}}
+                                          {{$item->email}}
                                       </td>
                                       <td class="">
                                          <div class="dropdown mt-4 mt-sm-0">
@@ -91,17 +89,15 @@
 
                                              <div class="dropdown-menu">
                                                  <a class="dropdown-item" href="#">
-                                                     <form action="{{route('role.destroy', [$item->id?? '']) }}" method="post">
+                                                     <form action="{{route('newslatter.destroy', [$item->id?? '']) }}" method="post">
                                                          @method('DELETE')
                                                          @csrf
-                                                         <button class=" text-danger delete-confirm-role" style="background: none;border:none" data-name="{{ $item->name_en }}" type="submit">
+                                                         <button class=" text-danger delete-confirm-newslatter" style="background: none;border:none" data-name="{{ $item->name_en }}" type="submit">
                                                            <i class=" bx bx-trash-alt"></i> Delete
                                                          </button>
                                                      </form>
                                                  </a>
-                                                 <a href="{{route('role.edit',$item->id)}}" class="dropdown-item text-warning"><i class=" bx bx-pencil"></i> Edit<i class="ti-pencil"></i></a>
-                                                 <a href="{{route('role.show',$item->id)}}" class="dropdown-item"><i class="bx bxs-user-detail"></i> Details<i class="ti-more"></i></a>
-                                             </div>
+                                                 </div>
                                          </div>
 
                                       </td>
@@ -131,7 +127,7 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
       <script>
-         $('.delete-confirm-role').click(function (event) {
+         $('.delete-confirm-newslatter').click(function (event) {
              var form = $(this).closest("form");
              var name = $(this).data("name");
              event.preventDefault();

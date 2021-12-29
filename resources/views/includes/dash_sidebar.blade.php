@@ -45,6 +45,12 @@
                         <span data-key="t-dashboard ">Admin</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('newslatter.index')}}">
+                        <i class="bx bx-user-circle"></i>
+                        <span data-key="t-dashboard ">Newslatter</span>
+                    </a>
+                </li>
 
 
 
