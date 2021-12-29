@@ -193,4 +193,25 @@ class AuthController extends Controller
         }
 
     }
+
+
+    public function contact(Request $request)
+    {
+
+        $this->validate($request,[
+            'email' => 'required|string|email|max:255',
+            'name' => 'required|max:255',
+            'message' => 'required|max:255',
+            'subject' => 'required|max:255',
+        ]);
+        $details = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ];
+
+        Mail::to('h.boundouq@gmail.com')->send(new \App\Mail\Contact($details));
+        return '1';
+    }
 }
