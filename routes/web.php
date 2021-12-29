@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DishController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\NewslatterController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -42,6 +43,7 @@ Route::middleware(['auth','isadmin'])->group(function () {
     Route::resource('admins', AdminsController::class);
     Route::resource('role', RoleController::class);
     Route::resource('newslatter', NewslatterController::class);
+    Route::resource('infos', InfoController::class);
 });
 Auth::routes();
 

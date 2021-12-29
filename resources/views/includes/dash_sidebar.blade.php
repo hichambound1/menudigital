@@ -51,6 +51,12 @@
                         <span data-key="t-dashboard ">Newslatter</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('infos.index')}}">
+                        <i class="bx bx-user-circle"></i>
+                        <span data-key="t-dashboard ">Infos</span>
+                    </a>
+                </li>
 
 
 
