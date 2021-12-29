@@ -37,7 +37,7 @@ class NewslatterController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:newslatters',
         ]);
         Newslatter::create([
             'email'=>$request->email,
