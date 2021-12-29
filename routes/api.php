@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\CategoryController;
 use App\Http\Controllers\Api\v1\DishController;
+use App\Http\Controllers\Api\v1\InfoController;
 use App\Http\Controllers\Api\v1\NewslatterController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
  Route::get('/category', [CategoryController::class, 'index']);
  Route::get('/alldishes', [DishController::class, 'alldishes']);
  Route::get('/oneresto/{id}', [DishController::class, 'oneresto']);
+ Route::get('/info', [InfoController::class, 'index']);
 
  // protected route
  Route::get('/dish/photos/{id}', [DishController::class, 'dish_photos']);
