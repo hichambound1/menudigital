@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Dish;
 use App\Models\Media;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -30,7 +32,14 @@ class DishController extends Controller
     public function create()
     {
         $categories= Category::all();
-        return view('dashboard.dishes.add',['categories'=>$categories]);
+        $role = Role::where('name','user')->first();
+        if($role== NULL){
+            $role=Role::create([
+                'name'=>'user'
+            ]);
+        }
+        $users= User::where('role_id',$role->id)->get();
+        return view('dashboard.dishes.add',['users'=>$users,'categories'=>$categories]);
     }
 
     /**
@@ -49,7 +58,8 @@ class DishController extends Controller
             'description_en'=> 'required|max:255',
             'description_fr'=> 'required|max:255',
             'description_ar'=> 'required|max:255',
-            'price'          => 'required|max:255',
+            'price'         => 'required|max:255',
+            'user_id'       => 'required|max:255',
             'solde'         => 'required|max:255',
             'ingredients_en'=> 'required|max:255',
             'ingredients_fr'=> 'required|max:255',
@@ -72,14 +82,14 @@ class DishController extends Controller
             'description_ar'=>$request->description_ar,
             'prix'=>$request->price,
             'solde'=>$request->solde,
-            'statu'=>'0',
+            'statu'=>'1',
             'currency'=>'$',
             'photo'=>$photo,
             'ingredients_en'=>$request->ingredients_en,
             'ingredients_fr'=>$request->ingredients_fr,
             'ingredients_ar'=>$request->ingredients_ar,
             'rate'=>'0',
-            'user_id'=>Auth::user()->id,
+            'user_id'=>$request->user_id,
             'category_id'=>$request->category,
         ]);
         return redirect()->route('dish.index')->with('added','dish added seccessfully');
@@ -127,6 +137,7 @@ class DishController extends Controller
             'description_ar'=> 'required|max:255',
             'price'          => 'required|max:255',
             'solde'         => 'required|max:255',
+            'user_id'         => 'required|max:255',
             'currency'         => 'required|max:255',
             'ingredients_en'=> 'required|max:255',
             'ingredients_fr'=> 'required|max:255',
@@ -152,13 +163,13 @@ class DishController extends Controller
             'description_ar'=>$request->description_ar,
             'prix'=>$request->price,
             'solde'=>$request->solde,
-            'statu'=>'0',
-            'currency'=>'$',
+            
+            'currency'=>$request->currency,
             'ingredients_en'=>$request->ingredients_en,
             'ingredients_fr'=>$request->ingredients_fr,
             'ingredients_ar'=>$request->ingredients_ar,
             'rate'=>'0',
-            'user_id'=>1,
+            'user_id'=>$request->user_id,
             'category_id'=>$request->category,
         ]);
         if($request->hasFile('photo')){
@@ -199,5 +210,19 @@ class DishController extends Controller
             'dish_id'=>$request->dish,
         ]);
         return back()->with('added','photo added');
+    }
+    public function dishstatu(Request $request, $id)
+    {
+
+        $etat=0;
+        if($request->etat=='on'){
+            $etat=1;
+        }
+
+        Dish::where('id',$id)->update([
+            'statu'=>$etat,
+
+        ]);
+        return redirect()->back()->with('added','etat changed');
     }
 }

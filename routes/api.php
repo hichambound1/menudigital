@@ -3,12 +3,16 @@
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\CategoryController;
 use App\Http\Controllers\Api\v1\DishController;
+use App\Http\Controllers\Api\v1\InfoController;
+use App\Http\Controllers\Api\v1\NewslatterController;
 use Illuminate\Support\Facades\Route;
 
 // public routes
 
  // public auth routes
  Route::post('/send/email/forgetpassword', [AuthController::class, 'sendemailforgetpassword']);
+ Route::post('/contact', [AuthController::class, 'contact']);
+ Route::post('/news', [NewslatterController::class, 'store']);
  Route::get('/email/forgetpassword/reset/{token}', [AuthController::class, 'resetpass'])->name('reset.password');
  Route::put('update/thepass', [AuthController::class, 'updatepass'])->name('updatepass');
  Route::post('/register', [AuthController::class, 'register']);
@@ -16,6 +20,7 @@ use Illuminate\Support\Facades\Route;
  Route::get('/category', [CategoryController::class, 'index']);
  Route::get('/alldishes', [DishController::class, 'alldishes']);
  Route::get('/oneresto/{id}', [DishController::class, 'oneresto']);
+ Route::get('/info', [InfoController::class, 'index']);
 
  // protected route
  Route::get('/dish/photos/{id}', [DishController::class, 'dish_photos']);

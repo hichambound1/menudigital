@@ -57,7 +57,7 @@ class CategoryController extends Controller
             'name_fr'=>$request->name_fr,
             'name_ar'=>$request->name_ar,
             'photo'  =>$photo,
-            'statu'  => '0',
+            'statu'  => '1',
         ]);
         return redirect()->route('category.index')->with('added','category added seccessfully');
     }
@@ -135,5 +135,19 @@ class CategoryController extends Controller
         }
         $category->delete();
         return redirect()->back()->with('deleted','categories deleted');
+    }
+    public function categorystatu(Request $request, $id)
+    {
+
+        $etat=0;
+        if($request->etat=='on'){
+            $etat=1;
+        }
+
+        Category::where('id',$id)->update([
+            'statu'=>$etat,
+
+        ]);
+        return redirect()->back()->with('added','etat changed');
     }
 }

@@ -1,44 +1,70 @@
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('dashboard.home')}}">
-          <i class="ti-home menu-icon"></i>
-          <span class="menu-title">@lang('dashboard')</span>
-        </a>
-      </li>
+
+  <div class="vertical-menu">
+
+    <div data-simplebar class="h-100">
+
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li class="menu-title" data-key="t-menu">Menu</li>
+
+                <li>
+                    <a href="{{route('dashboard.home')}}">
+                        <i class="bx bx-home-circle"></i>
+                        <span data-key="t-dashboard ">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('category.index')}}">
+                        <i class="bx bx-layout"></i>
+                        <span data-key="t-dashboard ">Categories</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('role.index')}}">
+                        <i class="bx bx-lock-alt"></i>
+                        <span data-key="t-dashboard ">Roles</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('user.index')}}">
+                        <i class="bx bx-user"></i>
+                        <span data-key="t-dashboard ">Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('dish.index')}}">
+                        <i class=" bx bxs-box"></i>
+                        <span data-key="t-dashboard ">Dishes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('admins.index')}}">
+                        <i class="bx bx-user-circle"></i>
+                        <span data-key="t-dashboard ">Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('newslatter.index')}}">
+                        <i class="bx bx-user-circle"></i>
+                        <span data-key="t-dashboard ">Newslatter</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('infos.index')}}">
+                        <i class="bx bx-user-circle"></i>
+                        <span data-key="t-dashboard ">Infos</span>
+                    </a>
+                </li>
 
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('category.index')}}">
-          <i class="ti-basketball menu-icon"></i>
-          <span class="menu-title">@lang('categories')</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('role.index')}}">
-          <i class="ti-basketball menu-icon"></i>
-          <span class="menu-title">@lang('roles')</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('user.index')}}">
-          <i class="ti-basketball menu-icon"></i>
-          <span class="menu-title">@lang('users')</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('dish.index')}}">
-          <i class="ti-basketball menu-icon"></i>
-          <span class="menu-title">@lang('dishes')</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.index')}}">
-          <i class="ti-basketball menu-icon"></i>
-          <span class="menu-title">@lang('admins')</span>
-        </a>
-      </li>
 
 
-    </ul>
-  </nav>
+
+            </ul>
+
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>

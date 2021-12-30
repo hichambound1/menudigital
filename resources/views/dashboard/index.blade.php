@@ -1,6 +1,6 @@
 @extends('includes.dash_layout')
-@section('dash')
-<div class="content-wrapper">
+@section('content')
+{{-- <div class="main-content">
     <div class="row">
         <div class="col-md-12 grid-margin">
             <div class="d-flex justify-content-between align-items-center">
@@ -70,5 +70,89 @@
         </div>
     </div>
 
+</div> --}}
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+<div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <!-- card -->
+                    <div class="card card-h-100">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+                                    <span class="text-muted mb-3 lh-1 d-block text-truncate">Categories</span>
+                                    <h4 class="mb-3">
+                                        <span class="counter-value" data-target="{{$categories_count}}">0</span>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div><!-- end card body -->
+                    </div><!-- end card -->
+                </div><!-- end col -->
+
+                {{-- <div class="col-xl-3 col-md-6">
+                    <!-- card -->
+                    <div class="card card-h-100">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+                                    <span class="text-muted mb-3 lh-1 d-block text-truncate">Admins</span>
+                                    <h4 class="mb-3">
+                                        <span class="counter-value" data-target="{{$admins_count}}">0</span>
+                                    </h4>
+                                </div>
+
+                            </div>
+
+                        </div><!-- end card body -->
+                    </div><!-- end card -->
+                </div> --}}
+                <!-- end col-->
+                <div class="col-xl-3 col-md-6">
+                    <!-- card -->
+                    <div class="card card-h-100">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+                                    <span class="text-muted mb-3 lh-1 d-block text-truncate">Dishes</span>
+                                    <h4 class="mb-3">
+                                        <span class="counter-value" data-target="{{$dishes_count}}">0</span>
+                                    </h4>
+                                </div>
+
+                            </div>
+
+                        </div><!-- end card body -->
+                    </div><!-- end card -->
+                </div><!-- end col-->
+                <div class="col-xl-3 col-md-6">
+                    <!-- card -->
+                    <div class="card card-h-100">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+                                    <span class="text-muted mb-3 lh-1 d-block text-truncate">Users</span>
+                                    <h4 class="mb-3">
+                                        <span class="counter-value" data-target="{{$users_count}}">0</span>
+                                    </h4>
+                                </div>
+
+                            </div>
+
+                        </div><!-- end card body -->
+                    </div><!-- end card -->
+                </div><!-- end col-->
+
+            </div><!-- end row-->
+        </div>
+    </div>
 </div>
+
 @endsection

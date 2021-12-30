@@ -35,6 +35,10 @@ class User extends Authenticatable
         'statu',
         'password',
         'role_id',
+        'facebook',
+        'insta',
+        'youtube',
+        'twitter',
     ];
 
     /**

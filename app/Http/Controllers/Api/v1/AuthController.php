@@ -35,7 +35,7 @@ class AuthController extends Controller
         $user= User::create([
             'name_en' =>$request->name_en,
             'email' => $request->email,
-            'statu' => 0,
+            'statu' => '1',
             'role_id'  => $role->id,
             'password' => Hash::make($request->password),
         ]);
@@ -192,5 +192,26 @@ class AuthController extends Controller
             return false;
         }
 
+    }
+
+
+    public function contact(Request $request)
+    {
+
+        $this->validate($request,[
+            'email' => 'required|string|email|max:255',
+            'name' => 'required|max:255',
+            'message' => 'required|max:255',
+            'subject' => 'required|max:255',
+        ]);
+        $details = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ];
+
+        Mail::to('h.boundouq@gmail.com')->send(new \App\Mail\Contact($details));
+        return '1';
     }
 }

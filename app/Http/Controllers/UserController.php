@@ -16,7 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users= User::all();
+        $role= Role::where('name','user')->first();
+
+        $users= User::where('role_id',$role->id)->get();
         return view('dashboard.users.index',['users'=>$users]);
     }
 
@@ -82,7 +84,11 @@ class UserController extends Controller
             'password'=> bcrypt($request->password),
             'email'=>$request->email,
             'logo'=>$photo,
-            'statu'  => '0',
+            'facebook'=>$request->facebook,
+            'insta'=>$request->insta,
+            'twitter'=>$request->twitter,
+            'youtube'=>$request->youtube,
+            'statu'  => '1',
             'role_id'  => $role->id
         ]);
         return redirect()->route('user.index')->with('added','user added seccessfully');
@@ -148,6 +154,18 @@ class UserController extends Controller
             'name_en'=>$request->name_en,
             'name_fr'=>$request->name_fr,
             'name_ar'=>$request->name_ar,
+            'facebook'=>$request->facebook,
+            'insta'=>$request->insta,
+            'twitter'=>$request->twitter,
+            'youtube'=>$request->youtube,
+            'description_ar'=>$request->description_ar,
+            'description_en'=>$request->description_en,
+            'description_fr'=>$request->description_fr,
+            'address_fr'=>$request->address_fr,
+            'address_en'=>$request->address_en,
+            'address_ar'=>$request->address_ar,
+            'phone'=>$request->phone,
+            'email'=>$request->email,
 
         ]);
         if($request->hasFile('logo')){
@@ -169,5 +187,19 @@ class UserController extends Controller
         }
         $user->delete();
         return redirect()->back()->with('deleted','user deleted');
+    }
+    public function userstatu(Request $request, $id)
+    {
+
+        $etat=0;
+        if($request->etat=='on'){
+            $etat=1;
+        }
+
+        User::where('id',$id)->update([
+            'statu'=>$etat,
+
+        ]);
+        return redirect()->back()->with('added','etat changed');
     }
 }
