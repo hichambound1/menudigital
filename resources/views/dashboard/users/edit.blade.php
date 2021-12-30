@@ -271,6 +271,34 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-lg-6 mb-3">
+                                    <label for="example-text-input" class="form-label">@lang('facebook')</label>
+                                    <input type="text" id="facebook" value="{{$user->facebook}}"  name="facebook" class="form-control" placeholder="facebook" >
+                                    @error('facebook')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-lg-6 mb-3">
+                                    <label for="example-text-input" class="form-label">@lang('instagram')</label>
+                                    <input type="text" id="insta" value="{{$user->insta}}"  name="insta" class="form-control" placeholder="insta" >
+                                    @error('insta')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-lg-6 mb-3">
+                                    <label for="example-text-input" class="form-label">@lang('youtube')</label>
+                                    <input type="text" id="youtube" value="{{$user->youtube}}"  name="youtube" class="form-control" placeholder="youtube" >
+                                    @error('youtube')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-lg-6 mb-3">
+                                    <label for="example-text-input" class="form-label">@lang('twitter')</label>
+                                    <input type="text" id="twitter" value="{{$user->twitter}}"  name="twitter" class="form-control" placeholder="twitter" >
+                                    @error('twitter')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="example-text-input"  class="form-label">@lang('logo')</label>

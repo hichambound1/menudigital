@@ -84,6 +84,10 @@ class UserController extends Controller
             'password'=> bcrypt($request->password),
             'email'=>$request->email,
             'logo'=>$photo,
+            'facebook'=>$request->facebook,
+            'insta'=>$request->insta,
+            'twitter'=>$request->twitter,
+            'youtube'=>$request->youtube,
             'statu'  => '1',
             'role_id'  => $role->id
         ]);
@@ -150,6 +154,18 @@ class UserController extends Controller
             'name_en'=>$request->name_en,
             'name_fr'=>$request->name_fr,
             'name_ar'=>$request->name_ar,
+            'facebook'=>$request->facebook,
+            'insta'=>$request->insta,
+            'twitter'=>$request->twitter,
+            'youtube'=>$request->youtube,
+            'description_ar'=>$request->description_ar,
+            'description_en'=>$request->description_en,
+            'description_fr'=>$request->description_fr,
+            'address_fr'=>$request->address_fr,
+            'address_en'=>$request->address_en,
+            'address_ar'=>$request->address_ar,
+            'phone'=>$request->phone,
+            'email'=>$request->email,
 
         ]);
         if($request->hasFile('logo')){

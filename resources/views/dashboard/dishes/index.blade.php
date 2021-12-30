@@ -207,7 +207,7 @@
                                      @forelse ($dishes as $item)
                                  <tr>
                                     <td >
-                                        <img src="{{asset($item->photo)}}" width="100px" alt="">
+                                        <img src="{{asset($item->photo)}}" height="100px" width="100px" alt="">
                                     </td>
                                       <td >
                                           {{$item->name_en}}
