@@ -126,6 +126,10 @@ class AuthController extends Controller
             'address_en'=>$request->address_en,
             'phone'=>$request->phone,
             'email'=>$request->email,
+            'facebook'=>$request->facebook,
+            'insta'=>$request->insta,
+            'youtube'=>$request->youtube,
+            'twitter'=>$request->twitter,
             'description_en'=>$request->description_en,
         ]);
         if($request->hasFile('logo')){
